@@ -18,10 +18,10 @@ Route::get('/', function () {
 /* Коротная запись Route::view */
 //Route::view('/', 'welcome');
 
-Route::get('user/{id?}', function ($num = null) {
-    echo $num ? 'User = ' . $num : 'User w/o parameter';
-});
-
 Route::get('category+{name?}', function ($name = null) {
     echo $name ? 'Category name = ' . $name : 'Category has no name!';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

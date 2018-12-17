@@ -40,4 +40,12 @@ services:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: 111
 
-
+  # NodeJS
+  node:
+    build:
+      context: ./
+      dockerfile: docker/node.docker
+    container_name: node
+    volumes:
+      - ./:/var/www
+    tty: true
