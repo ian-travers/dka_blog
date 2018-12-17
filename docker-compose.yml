@@ -1,0 +1,43 @@
+version: '3'
+services:
+  # Web server
+  nginx:
+    build:
+      context: ./
+      dockerfile: docker/nginx.docker
+    container_name: nginx
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8080:80"
+    depends_on:
+      - php-fpm
+    tty: true
+
+  # PHP-FPM
+  php-fpm:
+    build:
+      context: ./
+      dockerfile: docker/php-fpm.docker
+    container_name: php-fpm
+    volumes:
+      - ./:/var/www
+    environment:
+      DB_PORT: 3306
+      DB_HOST: db
+    depends_on:
+      - db
+
+  # Database
+  db:
+    image: mysql:5.7
+    container_name: db
+    volumes:
+      - ./storage/docker_db:/var/lib/mysql
+    ports:
+      - "33061:3306"
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: 111
+
+
