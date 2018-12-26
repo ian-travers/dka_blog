@@ -25,3 +25,5 @@ Route::get('category+{name?}', function ($name = null) {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/user{id?}', 'UserController@showId');

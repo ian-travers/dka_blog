@@ -5,7 +5,7 @@ services:
     build:
       context: ./
       dockerfile: docker/nginx.docker
-    container_name: nginx
+#    container_name: nginx
     volumes:
       - ./:/var/www
     ports:
@@ -19,7 +19,7 @@ services:
     build:
       context: ./
       dockerfile: docker/php-fpm.docker
-    container_name: php-fpm
+#    container_name: php-fpm
     volumes:
       - ./:/var/www
     environment:
@@ -31,7 +31,7 @@ services:
   # Database
   db:
     image: mysql:5.7
-    container_name: db
+#    container_name: db
     volumes:
       - ./storage/docker_db:/var/lib/mysql
     ports:
@@ -45,7 +45,7 @@ services:
     build:
       context: ./
       dockerfile: docker/node.docker
-    container_name: node
+#    container_name: node
     volumes:
       - ./:/var/www
     tty: true
