@@ -11,6 +11,14 @@
 |
 */
 
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'middleware' => ['auth'],
+], function () {
+    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,12 +26,7 @@ Route::get('/', function () {
 /* Коротная запись Route::view */
 //Route::view('/', 'welcome');
 
-Route::get('category+{name?}', function ($name = null) {
-    echo $name ? 'Category name = ' . $name : 'Category has no name!';
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user{id?}', 'UserController@showId');
