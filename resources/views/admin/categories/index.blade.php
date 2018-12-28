@@ -28,10 +28,14 @@
             <tr>
                 <td>{{$category->title}}</td>
                 <td>{{$category->published}}</td>
-                <td>
-                    <a href="{{route('admin.category.edit', ['id' => $category->id])}}">
-                        <i class="fas fa-edit"></i>
-                    </a>
+                <td class="text-right">
+                    <form onsubmit="if(confirm('Удалить?')) {return true} else {return false}" action="{{route('admin.category.destroy', $category)}}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        @csrf
+
+                        <a class="btn btn-outline-dark" href="{{route('admin.category.edit', $category)}}"><i class="fa fa-edit"></i></a>
+                        <button type="submit" class="btn"><i class="fas fa-trash"></i></button>
+                    </form>
                 </td>
             </tr>
         @empty

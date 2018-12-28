@@ -27,7 +27,7 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'slug', 'parent_id', 'created_by', 'modified_by'];
+    protected $fillable = ['title', 'slug', 'parent_id', 'published', 'created_by', 'modified_by'];
 
     // Mutators
     public function setSlugAttribute($value)
