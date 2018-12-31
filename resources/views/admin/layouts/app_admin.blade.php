@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="{{ mix('js/app.js', 'build') }}" defer></script>
 
     <!-- Fonts -->
@@ -40,7 +41,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Блог</a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a class="dropdown-item" href="{{route('admin.category.index')}}">Категории</a></li>
-                            <li><a class="dropdown-item" href="#">Материалы</a></li>
+                            <li><a class="dropdown-item" href="{{route('admin.article.index')}}">Материалы</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -85,6 +86,7 @@
         @yield('content')
     </main>
 </div>
+
 </body>
 </html>
 
